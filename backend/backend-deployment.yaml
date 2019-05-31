@@ -1,23 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: front
+  name: back
   labels:
-    app: front
+    app: back
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: front
+      app: back
   template:
     metadata:
       labels:
-        app: front
+        app: back
     spec:
       containers:
       -  name: front
-         image: docker.io/alinawazmamdani/frontend
+         image: docker.io/alinawazmamdani/backend
          ports:
-         - containerPort: 3000
+         - containerPort: 8085
+         env:
+         -  name: MYSQL_IP
+            value: mysql
 
 
